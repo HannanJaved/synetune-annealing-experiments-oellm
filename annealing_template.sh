@@ -333,7 +333,7 @@ OPTIMIZER_ARGS=(
     --no-load-rng
 )
 
-# mkdir -p $CHECKPOINT_PATH/torch
+mkdir -p $CHECKPOINT_PATH/torch
 
 OUTPUT_ARGS=(
     --eval-interval $EVAL_INTERVAL
@@ -345,7 +345,7 @@ OUTPUT_ARGS=(
 #    --async-save
     --log-interval $LOG_INTERVAL
     --ckpt-format "$CHECKPOINT_FORMAT"
-    --load "$CHECKPOINT_PATH/torch"
+    --load "$CHECKPOINT_PATH"
     --save "$CHECKPOINT_PATH/torch"
     --save-interval $SAVE_INTERVAL
 )
