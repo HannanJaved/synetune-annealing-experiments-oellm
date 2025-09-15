@@ -1,0 +1,16 @@
+DATA_PATHS=(
+    # NEMOTRON HQ DATA SPLIT 24k
+    /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-synthetic/GPT-NeoX/merged_0
+    /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-synthetic/GPT-NeoX/merged_1
+    /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-synthetic/GPT-NeoX/merged_2
+    /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-synthetic/GPT-NeoX/merged_3
+    /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-actual/GPT-NeoX/merged_0
+    /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-actual/GPT-NeoX/merged_1
+
+    # CODE - STARCODER DATA
+    /leonardo_work/AIFAC_L01_028/datasets/tokenized/bigcode-starcoderdata/GPT-NeoX/merged
+
+    # MATH - FineWeb Math Data
+    /leonardo_work/AIFAC_L01_028/datasets/tokenized/HuggingFaceTB-FineMath/GPT-NeoX/infiwebmath-3plus/merged
+    /leonardo_work/AIFAC_L01_028/datasets/tokenized/HuggingFaceTB-FineMath/GPT-NeoX/finemath-4plus/merged
+)    
