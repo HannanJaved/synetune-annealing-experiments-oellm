@@ -10,3 +10,4 @@ synetune-experiments/initials-runs/run4/checkpoints/
 synetune-experiments/initials-runs/run4/tensorboard/
 synetune-experiments/initials-runs/run5/checkpoints/
 synetune-experiments/initials-runs/run5/tensorboard/
+*.csv
