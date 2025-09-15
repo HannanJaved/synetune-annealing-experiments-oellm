@@ -1,0 +1,12 @@
+iter_0024000/
+synetune-experiments/initials-runs/wandb/
+synetune-experiments/initials-runs/run1/checkpoints/
+synetune-experiments/initials-runs/run1/tensorboard/
+synetune-experiments/initials-runs/run2/checkpoints/
+synetune-experiments/initials-runs/run2/tensorboard/
+synetune-experiments/initials-runs/run3/checkpoints/
+synetune-experiments/initials-runs/run3/tensorboard/
+synetune-experiments/initials-runs/run4/checkpoints/
+synetune-experiments/initials-runs/run4/tensorboard/
+synetune-experiments/initials-runs/run5/checkpoints/
+synetune-experiments/initials-runs/run5/tensorboard/
