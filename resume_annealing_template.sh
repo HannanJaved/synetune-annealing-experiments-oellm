@@ -43,10 +43,7 @@ mkdir -p "$TENSORBOARD_DIR"
 
 export BASE_PATH
 
-# Prepare data weights using SyneTune
-bash prepare_data_weights.sh
-
-# Read DATA_PATHS from file
+# Read DATA_PATHS from already created file
 DATA_PATHS=($(cat ${BASE_PATH}/run6/data_paths.txt))
 
 # WEIGHTS & BIASES CONFIG
@@ -247,7 +244,6 @@ MODEL_ARGS=(
     --num-attention-heads ${NUM_ATTENTION_HEADS}
     --seq-length ${SEQ_LENGTH}
     --max-position-embeddings ${SEQ_LENGTH}
-    --finetune
 )
 
 if [ "$NUM_QUERY_GROUPS" != "$NUM_ATTENTION_HEADS" ]; then
@@ -329,8 +325,6 @@ OPTIMIZER_ARGS=(
     --lr-wsd-decay-iters $LR_WSD_DECAY_ITERS
     --clip-grad $CLIP_GRAD
     --weight-decay $WEIGHT_DECAY
-    --no-load-optim 
-    --no-load-rng
 )
 
 # mkdir -p $CHECKPOINT_PATH/torch
