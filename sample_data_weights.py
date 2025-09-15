@@ -47,6 +47,10 @@ def main():
     # Merge back to get weights per run
     run_data = df[['Name'] + weight_cols].drop_duplicates()
 
+    # Calculate total number of data paths for equal split assumption
+    total_paths = sum(len(paths) for paths in DATA_GROUPS.values())
+    equal_per_path = 100 / total_paths
+
     # Config space for group weights (raw, will be normalized to sum to 100)
     config_space = {
         'nemotron_weight': uniform(0.1, 10),
@@ -80,14 +84,14 @@ def main():
             if group_weights and not pd.isna(group_weights[0]):
                 raw_config[f'{group}_weight'] = float(group_weights[0])
             else:
-                break  # Skip if any group missing
+                # Missing, assume equal split
+                raw_config[f'{group}_weight'] = equal_per_path * len(paths)
 
-        if len(raw_config) == len(config_space):
-            # Normalize to sum to 100
-            total_sum = sum(raw_config.values())
-            config = {k: (v / total_sum) * 100 for k, v in raw_config.items()}
-            print(f"Training on {run_name}: config={config}, metric={metric}")
-            cqr.on_trial_complete(run_name, config, metric)
+        # Normalize to sum to 100
+        total_sum = sum(raw_config.values())
+        config = {k: (v / total_sum) * 100 for k, v in raw_config.items()}
+        print(f"Training on {run_name}: config={config}, metric={metric}")
+        cqr.on_trial_complete(run_name, config, metric)
 
     # Sample new config
     new_config = None
@@ -111,9 +115,10 @@ def main():
     # Generate full weights dict
     full_weights = {}
     for group, paths in DATA_GROUPS.items():
-        weight = new_config[f'{group}_weight']
+        group_weight = new_config[f'{group}_weight']
+        path_weight = group_weight / len(paths)
         for path in paths:
-            full_weights[path] = weight
+            full_weights[path] = path_weight
 
     print("New data weights (sum to 100):")
     for path, weight in full_weights.items():
