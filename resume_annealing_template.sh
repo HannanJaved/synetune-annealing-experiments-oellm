@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH --job-name=Nemotron-Synth
-#SBATCH --output=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run6/actual_run.out
-#SBATCH --error=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run6/actual_run.err
+#SBATCH --output=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run7/actual_run.out
+#SBATCH --error=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run7/actual_run.err
 #SBATCH --time=18:00:00
 #SBATCH --nodes=3
 #SBATCH --ntasks-per-node=1
@@ -36,20 +36,20 @@ set -euo pipefail
 
 echo "SLURM_JOB_ID: $SLURM_JOB_ID"
 
-CHECKPOINT_PATH="${BASE_PATH}/run6/checkpoints"
-TENSORBOARD_DIR="${BASE_PATH}/run6/tensorboard"
+CHECKPOINT_PATH="${BASE_PATH}/run7/checkpoints"
+TENSORBOARD_DIR="${BASE_PATH}/run7/tensorboard"
 mkdir -p "$CHECKPOINT_PATH"
 mkdir -p "$TENSORBOARD_DIR"
 
 export BASE_PATH
 
 # Read DATA_PATHS from already created file
-DATA_PATHS=($(cat ${BASE_PATH}/run6/data_paths.txt))
+DATA_PATHS=($(cat ${BASE_PATH}/run7/data_paths.txt))
 
 # WEIGHTS & BIASES CONFIG
 USE_WANDB=1
 WANDB_PROJECT="annealing"
-WANDB_EXP_NAME="synetune-initial-run6"
+WANDB_EXP_NAME="synetune-initial-run7"
 WANDB_DIR="${BASE_PATH}/wandb"
 export WANDB_MODE="offline"
 
@@ -415,7 +415,7 @@ echo "END $SLURM_JOBID: $(date)"
 echo "==============TRAINING FINISHED, STARTING CONVERSION===================="
 
 VENV_PATH=/leonardo/home/userexternal/hmahadik/myenv
-LOG_PATH=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run6/
+LOG_PATH=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run7/
 MEGATRON_OPENSCI=/leonardo_work/AIFAC_L01_028/hmahadik/Megatron-LM-Open-Sci
 HF_OPENSCI=/leonardo_work/AIFAC_L01_028/hmahadik/Open-Sci-hf
 
@@ -456,7 +456,7 @@ LM_EVAL_RESULTS_PATH=$LOG_PATH/eval_results
 
 echo "Submitting the evaluation preparation job with dependency..."
 # export HF_CHECKPOINTS_PATH to the sbatch job so the downstream script can use it
-sbatch --dependency=afterok:${JOB_IDS} --export=HF_CHECKPOINTS_PATH="${CHECKPOINT_PATH}/hf" /leonardo_work/AIFAC_L01_028/hmahadik/prepare_and_launch_eval.sh
+sbatch --dependency=afterok:${JOB_IDS} --export=HF_CHECKPOINTS_PATH="${CHECKPOINT_PATH}/hf" /leonardo_work/AIFAC_L01_028/hmahadik/synetune-experiments/prepare_and_launch_eval.sh
 
 echo "Master script has finished submitting all stages."
 
