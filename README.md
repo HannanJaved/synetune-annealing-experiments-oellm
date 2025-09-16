@@ -155,7 +155,7 @@ Before starting a new run, update the following hardcoded values in `annealing_t
 - **Data paths file**: In `prepare_data_weights.sh`, the output goes to `${BASE_PATH}/run6/data_paths.txt` - update the run number
 
 ### Environment Variables
-- **BASE_PATH**: Set this before running (e.g., `export BASE_PATH=/leonardo_work/AIFAC_L01_028/hmahadik`)
+- **BASE_PATH**: Set this before running (e.g., `export BASE_PATH=/leonardo_work/AIFAC_L01_028/...`)
 - **LOG_PATH**: Update in the conversion section to match the new run
 
 ### Tips for Updates
