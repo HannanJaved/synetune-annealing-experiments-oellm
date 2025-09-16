@@ -142,7 +142,7 @@ Before starting a new run, update the following hardcoded values in `annealing_t
   - `WANDB_DIR="${BASE_PATH}/wandb"`
   - Log paths in SLURM directives
 - **WANDB experiment name**: Update `WANDB_EXP_NAME="synetune-initial-runs6"` to match the new run
-- **Job name**: Update `#SBATCH --job-name=Nemotron-Synth` if needed
+- **Data paths file**: Update in `prepare_data_weights.sh` to `${BASE_PATH}/run7/data_paths.txt`
 
 ### Training Configuration
 - **Training tokens**: `TRAIN_TOKENS=10_000_000_000` (currently 10B tokens)
