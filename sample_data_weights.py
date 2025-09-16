@@ -95,13 +95,17 @@ def main():
 
     # Sample new config
     new_config = None
-    for i in range(1000):
-        candidate = cqr.suggest()
-        # No additional constraints, accept any
-        new_config = candidate
-        print(f'Sampled {i} configurations')
-        break
 
+    # for i in range(1000):
+    #     candidate = cqr.suggest()
+    #     # No additional constraints, accept any
+    #     new_config = candidate
+    #     print(f'Sampled {i} configurations')
+    #     break
+
+    candidate = cqr.suggest()
+    new_config = candidate # No additional constraints, accept any
+        
     if new_config is None:
         print("No valid configuration found.")
         return
