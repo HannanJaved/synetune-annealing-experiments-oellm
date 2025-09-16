@@ -44,11 +44,14 @@ mkdir -p "$TENSORBOARD_DIR"
 export BASE_PATH
 
 # Prepare data weights using SyneTune
+echo "Preparing data weights using SyneTune..."
 bash prepare_data_weights.sh
 
 # Read DATA_PATHS from file
 DATA_PATHS=($(cat ${BASE_PATH}/run7/data_paths.txt))
 cp ${BASE_PATH}/run7/data_paths.txt /leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run7/data_paths.txt
+echo "Created data paths file with the following contents:"
+echo "${DATA_PATHS[@]}"
 
 # WEIGHTS & BIASES CONFIG
 USE_WANDB=1
