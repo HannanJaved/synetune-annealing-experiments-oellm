@@ -55,6 +55,11 @@ def main():
         'finemath_weight': uniform(0.1, 10),
         'starcoder_weight': uniform(0.1, 10),
     }
+    # config_space = {
+    #     'nemotron_weight': randint(1, 10),
+    #     'finemath_weight': randint(1, 10),
+    #     'starcoder_weight': randint(1, 10),
+    # }
 
     cqr = ConformalQuantileRegression(config_space=config_space)
 
