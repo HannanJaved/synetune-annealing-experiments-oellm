@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #SBATCH --job-name=Nemotron-Synth
-#SBATCH --output=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run7/actual_run.out
-#SBATCH --error=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run7/actual_run.err
-#SBATCH --time=18:00:00
+#SBATCH --output=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run11/actual_run.out
+#SBATCH --error=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run11/actual_run.err
+#SBATCH --time=08:30:00
 #SBATCH --nodes=3
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=32
@@ -36,8 +36,8 @@ set -euo pipefail
 
 echo "SLURM_JOB_ID: $SLURM_JOB_ID"
 
-CHECKPOINT_PATH="${BASE_PATH}/run7/checkpoints"
-TENSORBOARD_DIR="${BASE_PATH}/run7/tensorboard"
+CHECKPOINT_PATH="${BASE_PATH}/run11/checkpoints"
+TENSORBOARD_DIR="${BASE_PATH}/run11/tensorboard"
 mkdir -p "$CHECKPOINT_PATH"
 mkdir -p "$TENSORBOARD_DIR"
 
@@ -48,15 +48,15 @@ echo "Preparing data weights using SyneTune..."
 bash prepare_data_weights.sh
 
 # Read DATA_PATHS from file
-DATA_PATHS=($(cat ${BASE_PATH}/run7/data_paths.txt))
-cp ${BASE_PATH}/run7/data_paths.txt /leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run7/data_paths.txt
+DATA_PATHS=($(cat ${BASE_PATH}/run11/data_paths.txt))
+cp ${BASE_PATH}/run11/data_paths.txt /leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run11/data_paths.txt
 echo "Created data paths file with the following contents:"
 echo "${DATA_PATHS[@]}"
 
 # WEIGHTS & BIASES CONFIG
 USE_WANDB=1
 WANDB_PROJECT="annealing"
-WANDB_EXP_NAME="synetune-initial-run7"
+WANDB_EXP_NAME="synetune-initial-run11"
 WANDB_DIR="${BASE_PATH}/wandb"
 export WANDB_MODE="offline"
 
@@ -425,7 +425,7 @@ echo "END $SLURM_JOBID: $(date)"
 echo "==============TRAINING FINISHED, STARTING CONVERSION===================="
 
 VENV_PATH=/leonardo/home/userexternal/hmahadik/myenv
-LOG_PATH=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run7/
+LOG_PATH=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run11/
 MEGATRON_OPENSCI=/leonardo_work/AIFAC_L01_028/hmahadik/Megatron-LM-Open-Sci
 HF_OPENSCI=/leonardo_work/AIFAC_L01_028/hmahadik/Open-Sci-hf
 

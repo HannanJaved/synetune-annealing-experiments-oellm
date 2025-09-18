@@ -26,7 +26,7 @@ echo "LM_EVAL_OUTPUT_PATH: $LM_EVAL_OUTPUT_PATH"
 export OUTLINES_CACHE_DIR=/tmp/$SLURM_JOB_ID/$SLURM_ARRAY_TASK_ID/$MODEL_PATH_OR_NAME
 
 # LM_EVAL_RESULTS_PATH="${LM_EVAL_RESULTS_PATH}" 
-LM_EVAL_RESULTS_PATH="${LM_EVAL_RESULTS_PATH:-/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run5/eval_results}"
+LM_EVAL_RESULTS_PATH="${LM_EVAL_RESULTS_PATH:-/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run11/eval_results}"
 
 mkdir -p $LM_EVAL_OUTPUT_PATH
 

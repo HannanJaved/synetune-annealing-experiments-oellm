@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=PrepareEval
-#SBATCH --output=/leonardo/home/userexternal/hmahadik/logs/synetune/Nemotron-Synth/prepare_eval.out
-#SBATCH --error=/leonardo/home/userexternal/hmahadik/logs/synetune/Nemotron-Synth/prepare_eval.err
+#SBATCH --output=/leonardo_work/AIFAC_L01_028/hmahadik/synetune-experiments/eval-synetune/eval_script_logs/prepare_eval.out
+#SBATCH --error=/leonardo_work/AIFAC_L01_028/hmahadik/synetune-experiments/eval-synetune/eval_script_logs/prepare_eval.err
 #SBATCH --time=00:20:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -78,6 +78,6 @@ echo "Submitting evaluation job array with range 0-${ARRAY_UPPER_BOUND} and max 
 LOG_DIR=$(dirname "$LM_EVAL_RESULTS_PATH")/eval_logs
 
 # Submit the job with the --array flag now on the command line
-sbatch --array=0-${ARRAY_UPPER_BOUND}%${MAX_CONCURRENT_JOBS} --export=LM_EVAL_RESULTS_PATH="${LM_EVAL_RESULTS_PATH}",LOG_DIR="$LOG_DIR" $EVAL_JOB_DIR/slurm_script.sh
+sbatch --array=0-${ARRAY_UPPER_BOUND}%${MAX_CONCURRENT_JOBS} --export=LM_EVAL_RESULTS_PATH="${LM_EVAL_RESULTS_PATH}",LOG_DIR="${LOG_DIR}" $EVAL_JOB_DIR/slurm_script.sh
 
 echo "🚀 Evaluation job array submitted."
