@@ -1,4 +1,3 @@
-# filepath: /leonardo_work/AIFAC_L01_028/hmahadik/synetune-experiments/sample_data_weights.py
 import pathlib
 import argparse
 import pandas as pd
@@ -7,7 +6,6 @@ import numpy as np
 from syne_tune.config_space import randint, uniform
 from syne_tune.optimizer.schedulers.searchers.conformal.conformal_quantile_regression_searcher import ConformalQuantileRegression
 
-# Define groups and their paths
 DATA_GROUPS = {
     'nemotron': [
         '/leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-actual/GPT-NeoX/merged_0',
@@ -51,17 +49,12 @@ def main():
     total_paths = sum(len(paths) for paths in DATA_GROUPS.values())
     equal_per_path = 100 / total_paths
 
-    # Config space for group weights (raw, will be normalized to sum to 100)
+    # Config space for group weights
     config_space = {
         'nemotron_weight': uniform(0.1, 10),
         'finemath_weight': uniform(0.1, 10),
         'starcoder_weight': uniform(0.1, 10),
     }
-    # config_space = {
-    #     'nemotron_weight': randint(1, 10),
-    #     'finemath_weight': randint(1, 10),
-    #     'starcoder_weight': randint(1, 10),
-    # }
 
     cqr = ConformalQuantileRegression(config_space=config_space)
 
@@ -91,17 +84,10 @@ def main():
         total_sum = sum(raw_config.values())
         config = {k: (v / total_sum) * 100 for k, v in raw_config.items()}
         print(f"Training on {run_name}: config={config}, metric={metric}")
-        cqr.on_trial_complete(run_name, config, metric)
+        cqr.on_trial_complete(run_name, config, -metric)
 
     # Sample new config
     new_config = None
-
-    # for i in range(1000):
-    #     candidate = cqr.suggest()
-    #     # No additional constraints, accept any
-    #     new_config = candidate
-    #     print(f'Sampled {i} configurations')
-    #     break
 
     candidate = cqr.suggest()
     new_config = candidate # No additional constraints, accept any
