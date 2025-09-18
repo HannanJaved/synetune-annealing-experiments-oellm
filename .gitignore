@@ -30,6 +30,8 @@ initials-runs/run14/checkpoints/
 initials-runs/run14/tensorboard/
 initials-runs/run15/checkpoints/
 initials-runs/run15/tensorboard/
+initials-runs/run16/checkpoints/
+initials-runs/run16/tensorboard/
 *.csv
 eval-synetune/$LOG_DIR/
 eval-synetune/wandb/
