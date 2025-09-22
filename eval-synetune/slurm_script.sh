@@ -7,6 +7,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --account=AIFAC_L01_028
 #SBATCH --time=1439
+#SBATCH --exclude=lrdn[1711-3456]
 
 # ml Python  # cluster specific
 # ml Cuda  # cluster specific

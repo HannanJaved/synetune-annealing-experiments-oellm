@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH --job-name=Nemotron-Synth
-#SBATCH --output=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run11/actual_run.out
-#SBATCH --error=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run11/actual_run.err
+#SBATCH --output=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run13/actual_run.out
+#SBATCH --error=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run13/actual_run.err
 #SBATCH --time=08:00:00
 #SBATCH --nodes=3
 #SBATCH --ntasks-per-node=1
@@ -13,6 +13,7 @@
 #SBATCH --partition=boost_usr_prod
 #SBATCH --threads-per-core=1
 #SBATCH --qos=boost_qos_lprod
+#SBATCH --exclude=lrdn[1711-3456]
 
 # For quick tests on max 2 nodes: #SBATCH --qos=boost_qos_dbg or for more #SBATCH --qos=boost_qos_lprod
 # For large node numbers (> 64 nodes): add #SBATCH --qos=boost_qos_bprod
@@ -36,20 +37,20 @@ set -euo pipefail
 
 echo "SLURM_JOB_ID: $SLURM_JOB_ID"
 
-CHECKPOINT_PATH="${BASE_PATH}/run11/checkpoints"
-TENSORBOARD_DIR="${BASE_PATH}/run11/tensorboard"
+CHECKPOINT_PATH="${BASE_PATH}/run13/checkpoints"
+TENSORBOARD_DIR="${BASE_PATH}/run13/tensorboard"
 mkdir -p "$CHECKPOINT_PATH"
 mkdir -p "$TENSORBOARD_DIR"
 
 export BASE_PATH
 
 # Read DATA_PATHS from already created file
-DATA_PATHS=($(cat ${BASE_PATH}/run11/data_paths.txt))
+DATA_PATHS=($(cat ${BASE_PATH}/run13/data_paths.txt))
 
 # WEIGHTS & BIASES CONFIG
 USE_WANDB=1
 WANDB_PROJECT="annealing"
-WANDB_EXP_NAME="synetune-initial-run11"
+WANDB_EXP_NAME="synetune-initial-run13"
 WANDB_DIR="${BASE_PATH}/wandb"
 export WANDB_MODE="offline"
 
@@ -415,7 +416,7 @@ echo "END $SLURM_JOBID: $(date)"
 echo "==============TRAINING FINISHED, STARTING CONVERSION===================="
 
 VENV_PATH=/leonardo/home/userexternal/hmahadik/myenv
-LOG_PATH=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run11/
+LOG_PATH=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run13/
 MEGATRON_OPENSCI=/leonardo_work/AIFAC_L01_028/hmahadik/Megatron-LM-Open-Sci
 HF_OPENSCI=/leonardo_work/AIFAC_L01_028/hmahadik/Open-Sci-hf
 

@@ -9,6 +9,7 @@
 #SBATCH --partition=boost_usr_prod
 #SBATCH --threads-per-core=1
 #SBATCH --qos=boost_qos_dbg
+#SBATCH --exclude=lrdn[1711-3456]
 
 echo "✅ All conversion jobs finished. Starting evaluation preparation."
 
