@@ -1,0 +1,9 @@
+14.55 /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-actual/GPT-NeoX/merged_0
+14.55 /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-actual/GPT-NeoX/merged_1
+14.55 /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-synthetic/GPT-NeoX/merged_0
+14.55 /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-synthetic/GPT-NeoX/merged_1
+14.55 /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-synthetic/GPT-NeoX/merged_2
+14.55 /leonardo_work/AIFAC_L01_028/datasets/Nemotron-cc-2024/tokenized/quality-high_kind-synthetic/GPT-NeoX/merged_3
+3.58 /leonardo_work/AIFAC_L01_028/datasets/tokenized/HuggingFaceTB-FineMath/GPT-NeoX/finemath-4plus/merged
+3.58 /leonardo_work/AIFAC_L01_028/datasets/tokenized/HuggingFaceTB-FineMath/GPT-NeoX/infiwebmath-3plus/merged
+5.57 /leonardo_work/AIFAC_L01_028/datasets/tokenized/bigcode-starcoderdata/GPT-NeoX/merged
