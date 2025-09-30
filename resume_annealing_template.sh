@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH --job-name=Nemotron-Synth
-#SBATCH --output=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run13/actual_run.out
-#SBATCH --error=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run13/actual_run.err
+#SBATCH --output=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run18/actual_run.out
+#SBATCH --error=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run18/actual_run.err
 #SBATCH --time=08:00:00
 #SBATCH --nodes=3
 #SBATCH --ntasks-per-node=1
@@ -37,20 +37,20 @@ set -euo pipefail
 
 echo "SLURM_JOB_ID: $SLURM_JOB_ID"
 
-CHECKPOINT_PATH="${BASE_PATH}/run13/checkpoints"
-TENSORBOARD_DIR="${BASE_PATH}/run13/tensorboard"
+CHECKPOINT_PATH="${BASE_PATH}/run18/checkpoints"
+TENSORBOARD_DIR="${BASE_PATH}/run18/tensorboard"
 mkdir -p "$CHECKPOINT_PATH"
 mkdir -p "$TENSORBOARD_DIR"
 
 export BASE_PATH
 
 # Read DATA_PATHS from already created file
-DATA_PATHS=($(cat ${BASE_PATH}/run13/data_paths.txt))
+DATA_PATHS=($(cat ${BASE_PATH}/run18/data_paths.txt))
 
 # WEIGHTS & BIASES CONFIG
 USE_WANDB=1
 WANDB_PROJECT="annealing"
-WANDB_EXP_NAME="synetune-initial-run13"
+WANDB_EXP_NAME="synetune-initial-run18"
 WANDB_DIR="${BASE_PATH}/wandb"
 export WANDB_MODE="offline"
 
@@ -416,7 +416,7 @@ echo "END $SLURM_JOBID: $(date)"
 echo "==============TRAINING FINISHED, STARTING CONVERSION===================="
 
 VENV_PATH=/leonardo/home/userexternal/hmahadik/myenv
-LOG_PATH=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run13/
+LOG_PATH=/leonardo/home/userexternal/hmahadik/logs/synetune-initialruns/run18/
 MEGATRON_OPENSCI=/leonardo_work/AIFAC_L01_028/hmahadik/Megatron-LM-Open-Sci
 HF_OPENSCI=/leonardo_work/AIFAC_L01_028/hmahadik/Open-Sci-hf
 
